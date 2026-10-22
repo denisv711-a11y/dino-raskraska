@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Дино-раскраска — раскрась любого, он оживёт</title>
+<meta name="description" content="Раскрась динозавра на бумаге, сфотографируй телефоном — и он оживёт на экране. Раскраски бесплатно.">
+<link rel="icon" href="img/logo.webp">
+<style>
+@font-face{font-family:"Nunito";src:url("fonts/Nunito.ttf") format("truetype");font-weight:200 1000;font-display:swap}
+:root{--v1:#7048e8;--v2:#5f3dc4;--y:#ffe066;--w:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Nunito",system-ui,sans-serif;color:#2b1d5c;background:var(--w);line-height:1.5;font-size:17px;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:100%;max-width:1040px;margin:0 auto;padding:0 20px}
+/* шапка */
+header{background:var(--v2);color:var(--w)}
+header .wrap{display:flex;align-items:center;gap:12px;height:64px}
+header img{width:40px;height:40px;border-radius:50%;border:2px solid var(--y)}
+header b{font-size:20px;font-weight:900}
+/* первый экран */
+.hero{position:relative;color:var(--w);background:linear-gradient(180deg,rgba(95,61,196,.92),rgba(112,72,232,.86)),url("img/bg.webp") center/cover;padding:36px 0 28px;overflow:hidden}
+.hero h1{font-size:34px;line-height:1.1;font-weight:900;margin-bottom:12px}
+.hero h1 span{color:var(--y)}
+.hero p{font-size:18px;margin-bottom:22px;opacity:.95}
+.btns{display:flex;flex-direction:column;gap:12px}
+.btn{display:block;text-align:center;text-decoration:none;font-weight:800;font-size:18px;padding:15px 22px;border-radius:16px;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn.main{background:var(--y);color:var(--v2);box-shadow:0 4px 0 #d9b52c}
+.btn.sec{background:transparent;color:var(--w);border:3px solid var(--w)}
+.dinos{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;margin-top:26px;align-items:end}
+.dinos img{width:100%;height:auto;filter:drop-shadow(0 6px 6px rgba(0,0,0,.25));animation:bob 2.6s ease-in-out infinite}
+.dinos img:nth-child(2){animation-delay:-.7s}.dinos img:nth-child(3){animation-delay:-1.3s}.dinos img:nth-child(4){animation-delay:-1.9s}
+@keyframes bob{50%{transform:translateY(-8px)}}
+@media(prefers-reduced-motion:reduce){.dinos img{animation:none}}
+/* секции */
+section{padding:44px 0}
+h2{font-size:28px;line-height:1.15;font-weight:900;color:var(--v2);margin-bottom:22px}
+.steps{list-style:none;display:grid;gap:14px;counter-reset:s}
+.steps li{display:flex;gap:14px;align-items:center;background:#f4f0ff;border-radius:20px;padding:16px}
+.steps .ico{flex:none;width:56px;height:56px;border-radius:50%;background:var(--v1);display:grid;place-items:center;font-size:28px;position:relative}
+.steps .ico::after{counter-increment:s;content:counter(s);position:absolute;top:-6px;left:-6px;width:22px;height:22px;border-radius:50%;background:var(--y);color:var(--v2);font-size:13px;font-weight:900;display:grid;place-items:center}
+.steps b{display:block;font-size:18px}
+.steps small{display:block;font-size:15px;color:#5a4a8a}
+.tip{margin-top:16px;background:var(--y);color:var(--v2);font-weight:700;border-radius:16px;padding:12px 16px;font-size:16px}
+.dl{background:var(--v1);color:var(--w);text-align:center}
+.dl h2{color:var(--w)}
+.dl p{margin-bottom:20px;font-size:18px}
+.dl .btn{display:inline-block}
+details{background:#f4f0ff;border-radius:16px;margin-bottom:10px;padding:0 18px}
+summary{cursor:pointer;font-weight:800;font-size:18px;padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--v1);font-size:24px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{padding:0 0 16px}
+footer{background:var(--v2);color:var(--w);padding:30px 0;text-align:center;font-size:16px}
+footer a{color:var(--y);font-weight:700;overflow-wrap:anywhere}
+footer .links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-top:10px}
+@media(min-width:760px){
+ body{font-size:18px}
+ .hero{padding:64px 0 48px}
+ .hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+ .hero h1{font-size:52px}.hero p{font-size:21px}
+ .btns{flex-direction:row}
+ .dinos{margin-top:0}
+ h2{font-size:36px}
+ .steps{grid-template-columns:1fr 1fr}
+ section{padding:64px 0}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap"><img src="img/logo.webp" alt="" width="40" height="40"><b>Дино-раскраска</b></div></header>
+
+<main>
+<div class="hero"><div class="wrap">
+ <div>
+  <h1>Раскрась любого&nbsp;— <span>он оживёт!</span></h1>
+  <p>Раскрасьте динозавра на бумаге — он побежит по экрану.</p>
+  <div class="btns">
+   <a class="btn main" href="raskraski.pdf" download>Скачать раскраски (PDF)</a>
+   <!-- TODO: игре нужен сервер (VPS) — пока кнопка ведёт в ВК -->
+   <a class="btn sec" href="https://vk.ru/dino_raskraska">Игра — скоро, следите в ВК</a>
+  </div>
+ </div>
+ <div class="dinos">
+  <img src="img/trex.webp" alt="Оранжевый тираннозавр" width="420" height="215">
+  <img src="img/triceratops.webp" alt="Трицератопс" width="420" height="204">
+  <img src="img/stegosaurus.webp" alt="Стегозавр" width="420" height="199">
+  <img src="img/ankylosaurus.webp" alt="Анкилозавр" width="420" height="161">
+ </div>
+</div></div>
+
+<section id="how"><div class="wrap">
+ <h2>Как играть</h2>
+ <ol class="steps">
+  <li><span class="ico">🖨️</span><div><b>Распечатайте раскраску</b><small>Обычный лист А4 подойдёт</small></div></li>
+  <li><span class="ico">🖍️</span><div><b>Раскрасьте</b><small>Фломастеры, карандаши, мелки — как хочет ребёнок</small></div></li>
+  <li><span class="ico">📷</span><div><b>Сфотографируйте телефоном</b><small>Прямо на странице игры</small></div></li>
+  <li><span class="ico">🦖</span><div><b>Динозавр оживёт на экране</b><small>С теми же цветами, что на рисунке</small></div></li>
+ </ol>
+ <p class="tip">📺 Хотите на телевизоре? Откройте игру на большом экране и введите код с телефона.</p>
+</div></section>
+
+<section class="dl" id="pdf"><div class="wrap">
+ <h2>Скачать раскраски</h2>
+ <p>Динозавры для печати — бесплатно, без регистрации.</p>
+ <a class="btn main" href="raskraski.pdf" download>Скачать раскраски (PDF)</a>
+</div></section>
+
+<section id="faq"><div class="wrap">
+ <h2>Вопросы и ответы</h2>
+ <details><summary>Это бесплатно?</summary><p>Да. Раскраски скачиваются бесплатно, играть тоже можно бесплатно.</p></details>
+ <details><summary>Что нужно для игры?</summary><p>Принтер, чтобы распечатать раскраску, и телефон, чтобы сфотографировать рисунок.</p></details>
+ <details><summary>На каком экране бегает динозавр?</summary><p>На экране телефона, компьютера или телевизора. На ТВ лучше всего: ребёнок видит своего динозавра большим.</p></details>
+ <details><summary>Безопасно ли фотографировать?</summary><p>Да. Вы снимаете только рисунок на бумаге, не ребёнка и не комнату.</p></details>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <div>Вопросы: <a href="mailto:manag.mp@yandex.ru">manag.mp@yandex.ru</a></div>
+ <div class="links"><a href="https://vk.ru/dino_raskraska">ВКонтакте</a><a href="https://instagram.com/dino_raskraska">Instagram</a></div>
+</div></footer>
+</body>
+</html>
